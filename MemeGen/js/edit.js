@@ -99,3 +99,27 @@ function drawTheOtherLines() {
 function drawLine(line) {
   drawText(line.text, line.x, line.y, line.size, line.color, line.storkeColor)
 }
+
+function downloadCanvas(elLink) {
+  console.log(elLink);
+  const data = gElCanvas.toDataURL();
+  console.log('data', data);
+  elLink.href = data;
+  elLink.download = 'my-jpg.jpg'
+}
+
+var gMemes = []
+function _saveMemeToStorage() {
+  if (!gMemes.length) gMemes.push(gMeme);
+  else {
+    var memeIdx = gMemes.findIndex(meme => meme.selectedImgId === gMeme.selectedImgId)
+    console.log('memeIdx:', memeIdx);
+    if (memeIdx === -1) gMemes.push(gMeme);
+    else {
+      gMemes[memeIdx] = gMeme
+    }
+  }
+  console.log(gMemes);
+  saveToStorage('memes', gMemes)
+
+}

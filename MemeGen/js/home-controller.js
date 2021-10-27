@@ -13,11 +13,11 @@ function renderGallery() {
 function clickedImg(elImg) {
     var img = gImages.find(img => img.url === elImg.dataset.url)
     gMeme = { selectedImgId: img.id, lines: [] }
-    console.log(gMeme);
+    // console.log(gMeme);
     drawImg(elImg)
     onGoToEditPage()
     gImg = img
-    console.log(gImg);
+    // console.log(gImg);
 
 }
 

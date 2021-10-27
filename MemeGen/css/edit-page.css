@@ -39,10 +39,29 @@ button, input {
     width: 40px;
     font-size: 15px;
 }
+
 .img-icon {
     background-color: white;
     height: 40px;
     padding: 5px;
     border-radius: 10px;
     margin: 5px;
+}
+
+.save-share-container a {
+    height: 30px;
+    width: 120px;
+    background-color: violet;
+    border-radius: 7px;
+    padding: 5px;
+    text-align: center;
+}
+
+.save-share-container {
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    gap: 20px;
 }

@@ -1,5 +1,10 @@
+html {
+    width: 100vw;
+}
 body {
     background-color: rgb(181, 245, 245);
+    box-sizing: border-box;
+    /* width: 100%; */
 }
 
 header {
@@ -7,7 +12,8 @@ header {
     background-color: #ff7f00;
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .logo {
@@ -37,6 +43,7 @@ nav {
 
 .keyword-search {
     height: 35px;
+    width: 190px;
 }
 
 .gallery {
@@ -53,7 +60,8 @@ img {
 }
 
 footer {
-    height: 200px;
+    margin-top: 50px;
+    height: 100px;
     background-color: #ff7f00;
 }
 
