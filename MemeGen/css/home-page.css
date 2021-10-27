@@ -1,0 +1,59 @@
+body {
+    background-color: rgb(181, 245, 245);
+}
+
+header {
+    height: 80px;
+    background-color: #ff7f00;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo {
+    height: 20px;
+    align-self: center;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    align-self: center;
+}
+
+.keywords {
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    align-items: center;
+    padding-right: 20px; 
+    padding-left: 20px; 
+}
+.keywords-filter {
+    display: flex;
+    gap: 20px;
+}
+
+.keyword-search {
+    height: 35px;
+}
+
+.gallery {
+    height: 900px;
+    background-color: rgb(235, 235, 235);
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+}
+
+img {
+    height: 280px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+footer {
+    height: 200px;
+    background-color: #ff7f00;
+}
+
