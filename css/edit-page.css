@@ -1,10 +1,9 @@
+body {
+    font-family: 'Montserrat-Regular';
+}
 canvas {
     display: block;
-    background-color: white;
-}
-
-a {
-    cursor: pointer;
+    background-color: orangered;
 }
 
 .edit-container {
@@ -12,47 +11,59 @@ a {
     align-items: center;
     justify-content: center;
     gap: 70px;
-    padding-top: 50px ;
+    padding-top: 50px;
 }
 
+.input-container {
+    max-width: 300px;
+    min-height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
 .meme-text {
-    width: 150px;
+    width: 280px;
     border-radius: 7px;
     height: 40px;
 }
 
 .edit2-cont {
-    display: flex;
-    flex-wrap: wrap;
+
     align-items: center;
     /* position: relative;
     top: -100px;
     left: -300px; */
 }
 
-button, input {
-    cursor: pointer;
-    margin: 5px;
-    height: 40px;
-    width: 40px;
-    font-size: 15px;
+.edit-cont-btn {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .img-icon {
-    background-color: white;
     height: 40px;
     padding: 5px;
     border-radius: 10px;
-    margin: 5px;
+    cursor: pointer;
+    box-shadow: -2px 3px 8px 0px lightgrey;
 }
 
 .save-share-container a {
+    margin-top: 20px;
     height: 30px;
     width: 120px;
-    background-color: violet;
+    background-color: #ff7f00cc;
     border-radius: 7px;
     padding: 5px;
     text-align: center;
+    text-decoration:none;
+    color: black;
 }
 
 .save-share-container {
@@ -63,7 +74,31 @@ button, input {
     margin: auto;
     gap: 20px;
 }
-.input-container {
-    max-width: 500px;
-    min-height: 100px;
+
+.mark-line {
+    border: orange solid 7px;
+    box-shadow: -4px -1px 20px orange;
+}
+
+.color-input {
+    width: 200px;
+    height: 60px;
+    border:none;
+}
+
+.color-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.select-font {
+    border: black solid 2.5px;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 1px 1px 0px;
+    text-transform: uppercase;
+    font-family: 'Montserrat-Regular';
 }

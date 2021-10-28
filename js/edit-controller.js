@@ -2,7 +2,9 @@
 
 var gElCanvas = document.getElementById('my-canvas');
 var gCtx = gElCanvas.getContext('2d');
-
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
+var gStartPos
+var gIsDrag
 
 function drawImg(elImg) {
   gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
@@ -20,7 +22,9 @@ function drawText(text, x, y, size = 50, color = 'white', storkeColor = 'black')
   gCtx.fillText(text, x, y);
   gCtx.strokeText(text, x, y);
 }
+
 function drawTextFromInput(text, y, lineIdx) {
+  markLine()
   if (!gMeme.lines[lineIdx]) {
     drawImgFromSrc(gImg.url)
     gMeme.lines[lineIdx] = { text: text, x: 80, y: y, size: 50, color: 'white', storkeColor: 'black' }
@@ -30,13 +34,12 @@ function drawTextFromInput(text, y, lineIdx) {
     drawText(text, 80, y)
   }
   else {
-    var currLine = gMeme.lines[gIdx]
+    var currLine = gMeme.lines[gLineIdx]
     drawImgFromSrc(gImg.url)
     onDrawTheOtherLines()
-    var size = gMeme.lines[lineIdx].size
     gMeme.lines[lineIdx].text = text
     onDrawLine(currLine)
-  }
+  }  
 }
 function onMoveLine(directon) {
   if (!gMeme.lines.length) return
@@ -75,17 +78,76 @@ function onChangeStrokeColor(color) {
   onDrawTheOtherLines()
 }
 
-function onDrawTheOtherLines() { 
-  gMeme.lines.forEach(function (line) { if (line !== gMeme.lines[gIdx]) onDrawLine(line); })
+function onDrawTheOtherLines() {
+  gMeme.lines.forEach(function (line) { if (line !== gMeme.lines[gLineIdx]) onDrawLine(line); })
 }
+
 function onDrawLine(line) {
   drawText(line.text, line.x, line.y, line.size, line.color, line.storkeColor)
 }
 
 
 
-// function renderCanvas() {
-  
-//   drawImage2(gImg.url)
 
-// }
+
+
+// DRAG AND DROP  - NEEDS SOME ORDER BETWEEN SERVICE AND CONTROLLER
+function getEvPos(ev) { 
+  var pos = {
+    x: ev.offsetX,
+    y: ev.offsetY
+  }
+  if (gTouchEvs.includes(ev.type)) {
+    // ev.preventDefault()
+    ev = ev.changedTouches[0]
+    pos = {
+      x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+      y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
+    }
+  }
+  return pos
+}
+function isTextClicked(clickedPos) {
+  if (!gMeme.lines.length) return
+  var x = gMeme.lines[gLineIdx].x
+  var y = gMeme.lines[gLineIdx].y
+  var textLen = gMeme.lines[gLineIdx].text.length
+  var textSize = gMeme.lines[gLineIdx].size
+  const distance = textLen * textSize / 2
+  return clickedPos.x >= x && clickedPos.x <= x + distance && clickedPos.y >= y - textSize && clickedPos.y <= y
+}
+function onDown(ev) {
+  const pos = getEvPos(ev)
+  if (!isTextClicked(pos)) return
+  setTextDrag(true)
+  gStartPos = pos
+  document.body.style.cursor = 'grabbing'
+}
+function setTextDrag(isDrag) {
+  gIsDrag = isDrag
+}
+function onMove(ev) {
+  if (gIsDrag) {
+      const pos = getEvPos(ev)
+      const dx = pos.x - gStartPos.x
+      const dy = pos.y - gStartPos.y
+      gStartPos = pos
+      moveText(dx, dy)
+      renderCanvas()
+  }
+}
+function moveText(dx, dy) {
+  gMeme.lines[gLineIdx].x += dx
+  gMeme.lines[gLineIdx].y += dy
+}
+function renderCanvas() {
+  drawImgFromSrc(gImg.url)
+  var line = gMeme.lines[gLineIdx]
+  onDrawTheOtherLines()
+  onDrawLine(line)
+}
+function onUp() {
+  setTextDrag(false)
+  document.body.style.cursor = 'grab'
+}
+

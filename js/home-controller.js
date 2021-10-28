@@ -6,7 +6,7 @@ function renderGallery(images) {
     const elGallery = document.querySelector('.gallery-container')
     var strHtml = ''
     images.forEach(function (img) {
-        strHtml += `<img src="${img.url}" data-url="${img.url}" onclick="onClickedImg(this)">`
+        strHtml += `<img src="${img.url}" data-url="${img.url}" class="gallery-img" onclick="onClickedImg(this)">`
     })
     elGallery.innerHTML = strHtml
 }

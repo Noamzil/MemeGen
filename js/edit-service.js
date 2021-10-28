@@ -1,27 +1,40 @@
 'use strict'
 var gMeme = { lines: 1 }
-var gIdx
+var gLineIdx
 var gMemesStorage = loadFromStorage('memes')
 var gMemes = (!gMemesStorage) ? [] : gMemesStorage
+var gLineNumber =2
 
 function getLineIdx(idx) {
-    gIdx = idx
+    gLineIdx = idx
+    markLine()
+
 }
 
 function getCurrLine() {
-    var currLine = gMeme.lines[gIdx]
+    var currLine = gMeme.lines[gLineIdx]
     return currLine
 }
+
+function markLine() {
+    var elInput = document.querySelector(`.line-${gLineIdx}`)
+    gMeme.lines.forEach(() => {})
+    for (var i = 0; i <gLineNumber; i++) {
+        var currLine = document.querySelector(`.line-${i}`).classList.remove('mark-line')
+    }
+    elInput.classList.add('mark-line')
+}
+
 function moveLine(directon) {
     var currLine = getCurrLine()
     var path = (directon === 'down') ? 10 : -10
-    gMeme.lines[gIdx].y = currLine.y + path
+    gMeme.lines[gLineIdx].y = currLine.y + path
 }
 
 function alignText(directon) {
     if (!gMeme.lines.length) return
     var x = (directon === 'left') ? 40 : (directon === 'right') ? 300 : 180
-    gMeme.lines[gIdx].x = x
+    gMeme.lines[gLineIdx].x = x
 }
 
 function increaseDecreaseTextSize(size) {

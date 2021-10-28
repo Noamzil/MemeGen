@@ -1,78 +1,89 @@
-html {
-    width: 100vw;
+/* FONTS */
+
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url(/fonts/Montserrat/Montserrat-Regular.ttf);
+}
+
+/* GENERAL */
+body {
     box-sizing: border-box;
+    font-family: Montserrat-Regular;
 }
 
 
+/* HEADER */
 header {
-    height: 80px;
+    height: 5rem;
     background-color: #ff8000c4;
     display: flex;
     justify-content: space-between;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 1.25rem;
+    padding-right:1.25rem;
 }
 
 .logo {
-    height: 40px;
+    height: 2.5rem;
     align-self: center;
+    cursor: pointer;
 }
 
 .main-nav {
     display: flex;
-    gap: 20px;
+    gap: 1.25rem;
     align-self: center;
     font-size: larger;
     cursor: pointer;
 }
 
-.keywords {
-    height: 100px;
+.keywords-container {
+    height: 6.25rem;
     display: flex;
     justify-content: space-between;
     background-color: white;
     align-items: center;
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
 }
 
 .keywords-filter {
     display: flex;
-    gap: 20px;
-    padding-left: 20px;
+    gap: 1.25rem;
+    padding-left: 1.25rem;
 }
 
 .keyword-search {
-    height: 35px;
-    width: 220px;
+    height: 2.333rem;
+    width: 12.5rem;
     
 }
 
+.keyword {
+    cursor: pointer;
+}
+
 .gallery-container {
-    /* height: 900px; */
     background-color: rgb(235, 235, 235);
-    padding: 20px;
+    padding: 1.25rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 1.25rem;
     justify-content: center;
     align-items: center;
 }
 
-img {
+.gallery-img {
     margin: 0;
-    height: 280px;
+    height: 18.75rem;
+    width: 18.75rem;
     object-fit: cover;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 0.3rem;
+    box-shadow: 1px 2px 6px;
 }
 
 footer {
     margin-top: 50px;
     height: 100px;
     background-color: #ff7f00;
-}
-
-.keyword {
-    cursor: pointer;
 }

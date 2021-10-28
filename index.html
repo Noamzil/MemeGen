@@ -14,15 +14,15 @@
 
 <body>
     <header class="main-header">
-        <img class="logo" src="/img/LOGO.png">
+        <img class="logo" src="/img/LOGO.png" onclick="onGoToHomePage()">
         <nav class="main-nav">
             <div onclick="onGoToHomePage()">Gallery</div>
             <div onclick="savedMemes()">Memes</div>
         </nav>
     </header>
 
-    <div class="home-page">
-        <section class="keywords">
+    <div class="home-page" hidden>
+        <section class="keywords-container">
             <input class="keyword-search" type="search" placeholder="Enter search keyword">
             <div class="keywords-filter">
                 <h3 class="keyword" onclick="onFilterImg('funny')">funny</h3>
@@ -42,20 +42,21 @@
         </footer>
     </div>
 
-    <div class="edit-page" hidden>
+    <div class="edit-page"   >
             <div class="edit-container">
-                <canvas height="600" width="600" id="my-canvas"></canvas>
+                <canvas height="600" width="600" id="my-canvas" onmousedown="onDown(event)" onmousemove="onMove(event)" onmouseup="onUp()"></canvas>
+                
                 <div class="input-container">
-                    <input type="text" class="meme-text curr-line" placeholder="First line" onclick="getLineIdx(0)"
+                    <input type="text" class="meme-text line-0" placeholder="First line" onclick="getLineIdx(0)"
                         oninput="drawTextFromInput(value,80,0)">
-                    <input type="text" class="meme-text" placeholder="Second line" onclick="getLineIdx(1)"
+                    <input type="text" class="meme-text line-1" placeholder="Second line" onclick="getLineIdx(1)"
                         oninput="drawTextFromInput(value,400,1)">
                     <div class="edit-cont-btn">
                         <img class="img-icon" src="/img/ICONS/up.png" onclick="onMoveLine('up')">
                         <img class="img-icon" src="/img/ICONS/down.png" onclick="onMoveLine('down')">
-                        <img class="img-icon" src="/img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png">
-                        <img class="img-icon" src="/img/ICONS/add.png">
-                        <img class="img-icon" src="/img/ICONS/trash.png">
+                        <!-- <img class="img-icon" src="/img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"> -->
+                        <!-- <img class="img-icon" src="/img/ICONS/add.png"> -->
+                        <!-- <img class="img-icon" src="/img/ICONS/trash.png"> -->
                         <img class="img-icon" src="/img/ICONS/increase font - icon.png"
                             onclick="onIncreaseDecreaseTextSize('bigger')">
                         <img class="img-icon" src="/img/ICONS/decrease font - icon.png"
@@ -64,8 +65,16 @@
                         <img class="img-icon" src="/img/ICONS/center-text-alignment.png"
                             onclick="onAlignText('center')">
                         <img class="img-icon" src="/img/ICONS/align-to-right.png" onclick="onAlignText('right')">
-                        <input type="color" oninput="onChangeTextColor(value)">
-                        <input type="color" oninput="onChangeStrokeColor(value)">
+                        <select class="select-font">
+                            <option>Impact</option>
+                            <option>Impact</option>
+                            <option>Impact</option>
+                            <option>Impact</option>
+                        </select>
+                    </div>
+                    <div class="color-input-container">
+                        Text color <input class="color-input" type="color" oninput="onChangeTextColor(value)" value="#ffffff"> 
+                        Border color<input class="color-input" type="color" oninput="onChangeStrokeColor(value)">
                     </div>
                 </div>
             </div>
