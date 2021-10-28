@@ -36,3 +36,10 @@ function onFilterImg(filter) {
     console.log(gFilterBy);
     renderGallery(filterImg())
 }
+
+function toggleMenu() {
+    console.log('im here');
+    var elMenu =  document.querySelector('.keywords-container')
+    console.log(elMenu);
+    elMenu.style.right = 0
+}

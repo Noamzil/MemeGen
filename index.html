@@ -14,15 +14,18 @@
 
 <body>
     <header class="main-header">
-        <img class="logo" src="./img/LOGO.png" onclick="onGoToHomePage()">
-        <nav class="main-nav">
-            <div onclick="onGoToHomePage()">Gallery</div>
-            <div onclick="savedMemes()">Memes</div>
-        </nav>
-    </header>
-
+        <div class="header-container main-layout flex">
+            <img class="header-logo" src="./img/Untitled_Artwork1.png" onclick="onGoToHomePage()">
+            <nav class="main-nav">
+                <div onclick="onGoToHomePage()">Gallery</div>
+                <div onclick="savedMemes()">Memes</div>
+                <img class="hanburger-sign"src="./img/hamburger1.png" onclick="toggleMenu()">
+            </nav>
+            <!-- <img class="x=sign" src="/img/X.png"> -->
+        </div>
+        </header>    
     <div class="home-page">
-        <section class="keywords-container">
+        <section class="keywords-container main-layout">
             <input class="keyword-search" type="search" placeholder="Enter search keyword">
             <div class="keywords-filter">
                 <h3 class="keyword" onclick="onFilterImg('funny')">funny</h3>
@@ -30,15 +33,15 @@
                 <h3 class="keyword" onclick="onFilterImg('dog')">dogs</h3>
                 <h3 class="keyword" onclick="onFilterImg('drink')">drinks</h3>
                 <h3 class="keyword" onclick="onFilterImg('animal')">Animals</h3>
-                <h3 class="keyword">more</h3>
+                <!-- <h3 class="keyword">more</h3> -->
             </div>
         </section>
         <main>
             <div class="gallery-container"></div>
         </main>
         <footer>
-            <h2>MemeGen</h2>
-            <h5>all rights reserved 2019</h5>
+            <img class="footer-logo" src="./img/logos/Layer 2.png">
+            <h5 class="footer-copyrights">all rights reserved 2019</h5>
         </footer>
     </div>
 
