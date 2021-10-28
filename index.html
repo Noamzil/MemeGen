@@ -19,19 +19,19 @@
             <nav class="main-nav">
                 <div onclick="onGoToHomePage()">Gallery</div>
                 <div onclick="savedMemes()">Memes</div>
-                <img class="hanburger-sign"src="./img/hamburger1.png" onclick="toggleMenu()">
+                <img class="hamburger-sign" src="./img/hamburger1.png" onclick="openMenu()">
             </nav>
-            <!-- <img class="x=sign" src="/img/X.png"> -->
         </div>
-        </header>    
+    </header>
     <div class="home-page">
         <section class="keywords-container main-layout">
+            <img class="x-sign" src="/img/X.png" onclick="closeMenu()">
             <input class="keyword-search" type="search" placeholder="Enter search keyword">
             <div class="keywords-filter">
                 <h3 class="keyword" onclick="onFilterImg('funny')">funny</h3>
                 <h3 class="keyword" onclick="onFilterImg('comics')">comics</h3>
                 <h3 class="keyword" onclick="onFilterImg('dog')">dogs</h3>
-                <h3 class="keyword" onclick="onFilterImg('drink')">drinks</h3>
+                <h3 class="keyword" onclick="onFilterImg('white template')">White template</h3>
                 <h3 class="keyword" onclick="onFilterImg('animal')">Animals</h3>
                 <!-- <h3 class="keyword">more</h3> -->
             </div>
@@ -40,53 +40,53 @@
             <div class="gallery-container"></div>
         </main>
         <footer>
-            <img class="footer-logo" src="./img/logos/Layer 2.png">
+            <img class="footer-logo" src="./img/LOGO.png">
             <h5 class="footer-copyrights">all rights reserved 2019</h5>
         </footer>
     </div>
 
-    <div class="edit-page" hidden  >
-            <div class="edit-container">
-                <canvas height="600" width="600" id="my-canvas" onmousedown="onDown(event)" onmousemove="onMove(event)" onmouseup="onUp()"></canvas>
-                
-                <div class="input-container">
-                    <input type="text" class="meme-text line-0" placeholder="First line" onclick="getLineIdx(0)"
-                        oninput="drawTextFromInput(value,80,0)">
-                    <input type="text" class="meme-text line-1" placeholder="Second line" onclick="getLineIdx(1)"
-                        oninput="drawTextFromInput(value,400,1)">
-                    <div class="edit-cont-btn">
-                        <img class="img-icon" src="./img/ICONS/up.png" onclick="onMoveLine('up')">
-                        <img class="img-icon" src="./img/ICONS/down.png" onclick="onMoveLine('down')">
-                        <!-- <img class="img-icon" src="./img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"> -->
-                        <!-- <img class="img-icon" src="./img/ICONS/add.png"> -->
-                        <!-- <img class="img-icon" src="./img/ICONS/trash.png"> -->
-                        <img class="img-icon" src="./img/ICONS/increase font - icon.png"
-                            onclick="onIncreaseDecreaseTextSize('bigger')">
-                        <img class="img-icon" src="./img/ICONS/decrease font - icon.png"
-                            onclick="onIncreaseDecreaseTextSize('smaller')">
-                        <img class="img-icon" src="./img/ICONS/align-to-left.png" onclick="onAlignText('left')">
-                        <img class="img-icon" src="./img/ICONS/center-text-alignment.png"
-                            onclick="onAlignText('center')">
-                        <img class="img-icon" src="./img/ICONS/align-to-right.png" onclick="onAlignText('right')">
-                        <select class="select-font">
-                            <option>Impact</option>
-                            <option>Impact</option>
-                            <option>Impact</option>
-                            <option>Impact</option>
-                        </select>
-                    </div>
-                    <div class="color-input-container">
-                        Text color <input class="color-input" type="color" oninput="onChangeTextColor(value)" value="#ffffff"> 
-                        Border color<input class="color-input" type="color" oninput="onChangeStrokeColor(value)">
-                    </div>
+    <div class="edit-page" hidden>
+        <div class="edit-container">
+            <canvas height="600" width="600" id="my-canvas"></canvas>
+
+            <div class="input-container">
+                <input type="text" class="meme-text line-0" placeholder="First line" onclick="getLineIdx(0)"
+                    oninput="drawTextFromInput(value,80,0)">
+                <input type="text" class="meme-text line-1" placeholder="Second line" onclick="getLineIdx(1)"
+                    oninput="drawTextFromInput(value,400,1)">
+                <div class="edit-cont-btn">
+                    <img class="img-icon" src="./img/ICONS/up.png" onclick="onMoveLine('up')">
+                    <img class="img-icon" src="./img/ICONS/down.png" onclick="onMoveLine('down')">
+                    <!-- <img class="img-icon" src="./img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"> -->
+                    <!-- <img class="img-icon" src="./img/ICONS/add.png"> -->
+                    <!-- <img class="img-icon" src="./img/ICONS/trash.png"> -->
+                    <img class="img-icon" src="./img/ICONS/increase font - icon.png"
+                        onclick="onIncreaseDecreaseTextSize('bigger')">
+                    <img class="img-icon" src="./img/ICONS/decrease font - icon.png"
+                        onclick="onIncreaseDecreaseTextSize('smaller')">
+                    <img class="img-icon" src="./img/ICONS/align-to-left.png" onclick="onAlignText('left')">
+                    <img class="img-icon" src="./img/ICONS/center-text-alignment.png" onclick="onAlignText('center')">
+                    <img class="img-icon" src="./img/ICONS/align-to-right.png" onclick="onAlignText('right')">
+                    <select class="select-font">
+                        <option>Impact</option>
+                        <option>Impact</option>
+                        <option>Impact</option>
+                        <option>Impact</option>
+                    </select>
+                </div>
+                <div class="color-input-container">
+                    Text color <input class="color-input" type="color" oninput="onChangeTextColor(value)"
+                        value="#ffffff">
+                    Border color<input class="color-input" type="color" oninput="onChangeStrokeColor(value)">
                 </div>
             </div>
+        </div>
 
-            <div class="save-share-container">
-                <a onclick="_saveMemeToStorage()">Save</a>
-                <a href="#" onclick="downloadCanvas(this)">Download</a>
-                <a>Share</a>
-            </div>
+        <div class="save-share-container">
+            <a onclick="_saveMemeToStorage()">Save</a>
+            <a href="#" onclick="downloadCanvas(this)">Download</a>
+            <a>Share</a>
+        </div>
 
     </div>
 

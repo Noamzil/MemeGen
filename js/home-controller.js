@@ -37,9 +37,14 @@ function onFilterImg(filter) {
     renderGallery(filterImg())
 }
 
-function toggleMenu() {
+function openMenu() {
     console.log('im here');
     var elMenu =  document.querySelector('.keywords-container')
-    console.log(elMenu);
     elMenu.style.right = 0
+}
+
+function closeMenu() {
+    var elMenu =  document.querySelector('.keywords-container')
+    elMenu.style.right = -300+'px'
+
 }

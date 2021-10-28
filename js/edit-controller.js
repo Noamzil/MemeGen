@@ -5,6 +5,8 @@ var gCtx = gElCanvas.getContext('2d');
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 var gStartPos
 var gIsDrag
+addListeners()
+
 
 function drawImg(elImg) {
   gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
@@ -86,9 +88,34 @@ function onDrawLine(line) {
   drawText(line.text, line.x, line.y, line.size, line.color, line.storkeColor)
 }
 
+function resizeCanvas() {
+  var elContainer = document.querySelector('.canvas-container')
+  gElCanvas.width = elContainer.offsetWidth
+  gElCanvas.height = elContainer.offsetHeight
+  drawImgFromSrc(gImg.url)
+}
+
+function addListeners() {
+  addMouseListeners()
+  addTouchListeners()
+  // window.addEventListener('resize', () => {
+  //     resizeCanvas()
+  //     renderCanvas()
+  // })
+}
+
+function addMouseListeners() {
+  gElCanvas.addEventListener('mousemove', onMove)
+  gElCanvas.addEventListener('mousedown', onDown)
+  gElCanvas.addEventListener('mouseup', onUp)
+}
 
 
-
+function addTouchListeners() {
+  gElCanvas.addEventListener('touchmove', onMove)
+  gElCanvas.addEventListener('touchstart', onDown)
+  gElCanvas.addEventListener('touchend', onUp)
+}
 
 
 // DRAG AND DROP  - NEEDS SOME ORDER BETWEEN SERVICE AND CONTROLLER

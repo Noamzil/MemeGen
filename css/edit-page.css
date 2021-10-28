@@ -1,9 +1,15 @@
 body {
     font-family: 'Montserrat-Regular';
 }
+
 canvas {
     display: block;
     background-color: orangered;
+}
+
+.canvas-container {
+    width: 60vw;
+    height: 60vh;
 }
 
 .edit-container {
@@ -22,7 +28,6 @@ canvas {
     gap: 10px;
 }
 
-
 .meme-text {
     width: 280px;
     border-radius: 7px;
@@ -30,7 +35,6 @@ canvas {
 }
 
 .edit2-cont {
-
     align-items: center;
     /* position: relative;
     top: -100px;
@@ -62,7 +66,7 @@ canvas {
     border-radius: 7px;
     padding: 5px;
     text-align: center;
-    text-decoration:none;
+    text-decoration: none;
     color: black;
 }
 
@@ -83,7 +87,7 @@ canvas {
 .color-input {
     width: 200px;
     height: 60px;
-    border:none;
+    border: none;
 }
 
 .color-input-container {
@@ -101,4 +105,10 @@ canvas {
     box-shadow: 1px 1px 0px;
     text-transform: uppercase;
     font-family: 'Montserrat-Regular';
+}
+
+@media (max-width:1000px) {
+    .edit-container {
+        flex-direction: column;
+    }
 }
