@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemeGen</title>
+    <link rel="icon" href="img/logo3.jpg">
+    <link rel="stylesheet" href="/css/home-page.css">
+    <link rel="stylesheet" href="/css/edit-page.css">
+
+</head>
+
+<body>
+    <header class="main-header">
+        <img class="logo" src="/img/LOGO.png">
+        <nav class="main-nav">
+            <div onclick="onGoToHomePage()">Gallery</div>
+            <div onclick="savedMemes()">Memes</div>
+        </nav>
+    </header>
+
+    <div class="home-page">
+        <section class="keywords">
+            <input class="keyword-search" type="search" placeholder="Enter search keyword">
+            <div class="keywords-filter">
+                <h3 class="keyword" onclick="onFilterImg('funny')">funny</h3>
+                <h3 class="keyword" onclick="onFilterImg('comics')">comics</h3>
+                <h3 class="keyword" onclick="onFilterImg('dog')">dogs</h3>
+                <h3 class="keyword" onclick="onFilterImg('drink')">drinks</h3>
+                <h3 class="keyword" onclick="onFilterImg('animal')">Animals</h3>
+                <h3 class="keyword">more</h3>
+            </div>
+        </section>
+        <main>
+            <div class="gallery-container"></div>
+        </main>
+        <footer>
+            <h2>MemeGen</h2>
+            <h5>all rights reserved 2019</h5>
+        </footer>
+    </div>
+
+    <div class="edit-page" hidden>
+            <div class="edit-container">
+                <canvas height="600" width="600" id="my-canvas"></canvas>
+                <div class="input-container">
+                    <input type="text" class="meme-text curr-line" placeholder="First line" onclick="getLineIdx(0)"
+                        oninput="drawTextFromInput(value,80,0)">
+                    <input type="text" class="meme-text" placeholder="Second line" onclick="getLineIdx(1)"
+                        oninput="drawTextFromInput(value,400,1)">
+                    <div class="edit-cont-btn">
+                        <img class="img-icon" src="/img/ICONS/up.png" onclick="onMoveLine('up')">
+                        <img class="img-icon" src="/img/ICONS/down.png" onclick="onMoveLine('down')">
+                        <img class="img-icon" src="/img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png">
+                        <img class="img-icon" src="/img/ICONS/add.png">
+                        <img class="img-icon" src="/img/ICONS/trash.png">
+                        <img class="img-icon" src="/img/ICONS/increase font - icon.png"
+                            onclick="onIncreaseDecreaseTextSize('bigger')">
+                        <img class="img-icon" src="/img/ICONS/decrease font - icon.png"
+                            onclick="onIncreaseDecreaseTextSize('smaller')">
+                        <img class="img-icon" src="/img/ICONS/align-to-left.png" onclick="onAlignText('left')">
+                        <img class="img-icon" src="/img/ICONS/center-text-alignment.png"
+                            onclick="onAlignText('center')">
+                        <img class="img-icon" src="/img/ICONS/align-to-right.png" onclick="onAlignText('right')">
+                        <input type="color" oninput="onChangeTextColor(value)">
+                        <input type="color" oninput="onChangeStrokeColor(value)">
+                    </div>
+                </div>
+            </div>
+
+            <div class="save-share-container">
+                <a onclick="_saveMemeToStorage()">Save</a>
+                <a href="#" onclick="downloadCanvas(this)">Download</a>
+                <a>Share</a>
+            </div>
+
+    </div>
+
+    <div class="saved-memes-page">
+        <main>
+            <div class="saved-memes-gallery"></div>
+        </main>
+    </div>
+
+    <script src="/js/storage-service.js"></script>
+    <script src="/js/home-service.js"></script>
+    <script src="/js/home-controller.js"></script>
+    <script src="js/edit-service.js"></script>
+    <script src="js/edit-controller.js"></script>
+    <script src="/js/saved-memes.js"></script>
+</body>
+
+</html>

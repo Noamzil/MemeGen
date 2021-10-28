@@ -1,0 +1,69 @@
+canvas {
+    display: block;
+    background-color: white;
+}
+
+a {
+    cursor: pointer;
+}
+
+.edit-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+    padding-top: 50px ;
+}
+
+.meme-text {
+    width: 150px;
+    border-radius: 7px;
+    height: 40px;
+}
+
+.edit2-cont {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    /* position: relative;
+    top: -100px;
+    left: -300px; */
+}
+
+button, input {
+    cursor: pointer;
+    margin: 5px;
+    height: 40px;
+    width: 40px;
+    font-size: 15px;
+}
+
+.img-icon {
+    background-color: white;
+    height: 40px;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.save-share-container a {
+    height: 30px;
+    width: 120px;
+    background-color: violet;
+    border-radius: 7px;
+    padding: 5px;
+    text-align: center;
+}
+
+.save-share-container {
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    gap: 20px;
+}
+.input-container {
+    max-width: 500px;
+    min-height: 100px;
+}
