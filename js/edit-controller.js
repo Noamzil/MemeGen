@@ -143,9 +143,16 @@ function isTextClicked(clickedPos) {
   const distance = textLen * textSize / 2
   return clickedPos.x >= x && clickedPos.x <= x + distance && clickedPos.y >= y - textSize && clickedPos.y <= y
 }
+
+function onGetLine(ev,pos) {
+  console.log(pos); 
+  
+}
+
 function onDown(ev) {
   const pos = getEvPos(ev)
   if (!isTextClicked(pos)) return
+  onGetLine(ev,pos)
   setTextDrag(true)
   gStartPos = pos
   document.body.style.cursor = 'grabbing'
@@ -177,4 +184,5 @@ function onUp() {
   setTextDrag(false)
   document.body.style.cursor = 'grab'
 }
+
 
