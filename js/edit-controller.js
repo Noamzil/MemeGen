@@ -23,7 +23,7 @@ function drawTextFromInput(text, y, lineIdx) {
   markLine()
   if (!gMeme.lines[lineIdx]) {
     drawImgFromSrc(gImg.url)
-    gMeme.lines[lineIdx] = { text: text, x: 80, y: y, size: 50, color: 'white', storkeColor: 'black', font:'Impact'}
+    gMeme.lines[lineIdx] = { text: text, x: 80, y: y, size: 50, color: 'white', storkeColor: 'black', font: 'Impact' }
     gMeme['selectedLineIdx'] = lineIdx
     gMeme['url'] = gImg.url
     onDrawTheOtherLines()
@@ -125,7 +125,6 @@ function isTextClicked(clickedPos) {
 
 function onDown(ev) {
   const pos = getEvPos(ev)
-  console.log('isTextClicked(pos):',isTextClicked(pos));
   if (!isTextClicked(pos)) return
   setTextDrag(true)
   gStartPos = pos
@@ -158,4 +157,5 @@ function onUp() {
   setTextDrag(false)
   document.body.style.cursor = 'grab'
 }
+
 

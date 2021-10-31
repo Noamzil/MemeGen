@@ -1,5 +1,9 @@
 'use strict'
-onRenderGallery(gImages)
+function onInit() {
+    onRenderGallery(gImages)
+    onRenderKeyWords()
+}
+
 
 function onRenderGallery(images) {
     const elGallery = document.querySelector('.gallery-container')
@@ -27,17 +31,41 @@ function onGoToHomePage() {
     const elHomePage = document.querySelector('.home-page').hidden = false
     const elEditPage = document.querySelector('.edit-page').hidden = true
     const elSavedPage = document.querySelector('.saved-memes-page').hidden = true
+    onRenderGallery(gImages)
 }
 
 
-function onFilterImg(filter,word) {
+function onFilterImg(filter) {
     if (!filter) onRenderGallery(gImages)
     var currKeyWord = gFilterKeywords.find(keywordObj => keywordObj.keyword === filter)
     currKeyWord.frequency++
-    console.log(currKeyWord)
     gFilterBy = filter
     onRenderGallery(filterImg())
 }
+
+function onRenderKeyWords() {
+    var elKeyWords = document.querySelector('.keywords')
+    var strHtml = ''
+    for (var i=0; i<4; i++) {
+        strHtml+= `<li class="keyword" onclick="onFilterImg(this.innerText,this)">${gFilterKeywords[i].keyword}</li>`
+    }
+    elKeyWords.innerHTML = strHtml
+    document.querySelector('.more-btn').hidden = false
+    document.querySelector('.less-btn').hidden = true
+
+}
+
+function onMoreKeywords() {
+    var elKeyWords = document.querySelector('.keywords')
+    var strHtml = ''
+    gFilterKeywords.forEach(keywordObj => strHtml += `<li class="keyword" onclick="onFilterImg(this.innerText)">${keywordObj.keyword}</li>`)
+    elKeyWords.innerHTML = strHtml
+    document.querySelector('.more-btn').hidden = true
+    document.querySelector('.less-btn').hidden = false
+}
+
+
+
 
 
 function openMenu() {
@@ -48,14 +76,4 @@ function openMenu() {
 function closeMenu() {
     var elMenu = document.querySelector('.keywords-filter-container')
     elMenu.style.right = -300 + 'px'
-
 }
-
-function renderKeyWords() {
-    var elKeyWords = document.querySelector('.keywords')
-    var strHtml = ''
-    gFilterKeywords.forEach(keywordObj => strHtml += `<li class="keyword" onclick="onFilterImg(this.innerText,this)">${keywordObj.keyword}</li>`)
-    elKeyWords.innerHTML = strHtml
-}
-
-renderKeyWords()

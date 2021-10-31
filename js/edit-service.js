@@ -63,19 +63,21 @@ function downloadCanvas(elLink) {
     elLink.download = 'my-jpg.jpg'
 }
 
-function _saveMemeToStorage() {
-    if (!gMemesStorage) gMemes.push(gMeme);
-    else {
-        gMemes = gMemesStorage
-        var memeIdx = gMemes.findIndex(meme => meme.selectedImgId === gMeme.selectedImgId)
-        if (memeIdx === -1) gMemes.push(gMeme);
-        else {
-            gMemes[memeIdx] = gMeme
-        }
-    }
-    saveToStorage('memes', gMemes)
-}
+// function _saveMemeToStorage() {
+//     if (!gMemesStorage) gMemes.push(gMeme);
+//     else {
+//         gMemes = gMemesStorage
+//         var memeIdx = gMemes.findIndex(meme => meme.selectedImgId === gMeme.selectedImgId)
+//         if (memeIdx === -1) gMemes.push(gMeme);
+//         else {
+//             gMemes[memeIdx] = gMeme
+//         }
+//     }
+//     saveToStorage('memes', gMemes)
+// }
 
 function changeFont(currLine, font){
     currLine.font = font
 }
+
+

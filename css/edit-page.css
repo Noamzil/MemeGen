@@ -14,70 +14,60 @@ canvas {
 }
 
 .edit-container {
-    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 70px;
-    padding-top: 50px;
+    gap: 4.375rem;
+    padding-top: 3.125rem;
 }
 
 .input-container {
-    max-width: 300px;
-    min-height: 100px;
-    display: flex;
+    max-width: 18.75rem;
+    min-height: 6.25rem;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 0.625rem;
 }
 
 .meme-text {
-    width: 280px;
-    border-radius: 7px;
-    height: 40px;
-}
-
-.edit2-cont {
-    align-items: center;
-    /* position: relative;
-    top: -100px;
-    left: -300px; */
+    width: 17.5rem;
+    border-radius:0.4375rem;
+    height: 2.5rem;
 }
 
 .edit-cont-btn {
-    display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 10px;
+    gap: 0.625rem;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 1.25rem;
 }
 
 .img-icon {
-    height: 40px;
-    padding: 5px;
-    border-radius: 10px;
+    height: 2.5rem;
+    padding: 0.3125rem;
+    border-radius: 0.625rem;
     cursor: pointer;
     box-shadow: -2px 3px 8px 0px lightgrey;
 }
 
 .save-share-container a {
-    margin-top: 20px;
-    height: 30px;
-    width: 120px;
+    margin-top: 1.25rem;
+    height: 1.875rem;
+    width: 7.5rem;
     background-color: #ff7f00cc;
-    border-radius: 7px;
-    padding: 5px;
+    border-radius: 0.435rem;
+    padding: 0.3125rem;
     text-align: center;
     text-decoration: none;
     color: black;
 }
 
 .save-share-container {
-    padding-top: 20px;
-    display: flex;
+    padding-top: 1.25rem;
     align-items: center;
     justify-content: center;
     margin: auto;
-    gap: 20px;
+    gap: 1.25rem;
+    padding-bottom: 3.75rem;
 }
 
 .mark-line {
@@ -86,26 +76,28 @@ canvas {
 }
 
 .color-input {
-    width: 200px;
-    height: 60px;
+    width: 12.5rem;
+    height: 3.75rem;
     border: none;
 }
 
 .color-input-container {
-    display: flex;
     flex-direction: column;
     align-items: center;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 1.25rem;
 }
 
 .select-font {
     border: black solid 2.5px;
-    border-radius: 5px;
-    padding: 10px;
+    border-radius: 0.3125rem;
+    padding: 0.625rem;
     box-shadow: 1px 1px 0px;
     text-transform: uppercase;
     font-family: 'Montserrat-Regular';
+}
+.save-btn {
+    cursor:not-allowed;
 }
 
 @media (max-width:1000px) {
@@ -120,18 +112,18 @@ canvas {
         margin: 0;
         width: 100vw;
         font-size: medium;
-        height: 100px;
+        height: 6.25rem;
     }
     .header-logo {
-        height: 100px;
-        width: 150px;
+        height: 6.25rem;
+        width: 9.375rem;
     }
     .edit-page {
         margin: auto;
     }
     .edit-container {
         flex-direction: column;
-        gap: 10px;
+        gap: 0.625rem;
         justify-content: center;
         align-items: center;
     }
@@ -139,14 +131,14 @@ canvas {
         height: 70vw;
     }
     .meme-text {
-        height: 30px;
+        height: 1.875rem;
     }
     .edit-cont-btn {
         margin: 0;
     }
     .img-icon {
-        height: 25px;
-        width: 25px;
+        height: 1.5625rem;
+        width: 1.5625rem;
     }
     .select-font {
         padding: 5px;
@@ -155,18 +147,24 @@ canvas {
         margin-top: 0;
     }
     .color-input {
-        height: 30px;
-        width: 100px;
+        height: 1.875rem;
+        width: 6.25rem;
     }
     .save-share-container {
         padding: 0;
-        padding-left: 15px;
+        padding-left: 0.9375rem;
     }
     .save-share-container a {
         margin: 0;
-        width: 80px;
-        height: 20px;
-        padding:2 10px;
-
+        width: 5rem;
+        height: 1.25rem;
+        padding: 2 10px;
     }
+}
+
+
+.test {
+    height: 300px;
+    width: 300px;
+    margin: auto;
 }
