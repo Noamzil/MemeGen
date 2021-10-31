@@ -5,6 +5,7 @@ body {
 canvas {
     display: block;
     background-color: orangered;
+    border: black solid 1px;
 }
 
 .canvas-container {
@@ -108,7 +109,64 @@ canvas {
 }
 
 @media (max-width:1000px) {
+    body {
+        width: 100vw;
+    }
+    .header-container {
+        max-width: 90vw;
+        margin: 0;
+    }
+    .main-header {
+        margin: 0;
+        width: 100vw;
+        font-size: medium;
+        height: 100px;
+    }
+    .header-logo {
+        height: 100px;
+        width: 150px;
+    }
+    .edit-page {
+        margin: auto;
+    }
     .edit-container {
         flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+    canvas {
+        height: 70vw;
+    }
+    .meme-text {
+        height: 30px;
+    }
+    .edit-cont-btn {
+        margin: 0;
+    }
+    .img-icon {
+        height: 25px;
+        width: 25px;
+    }
+    .select-font {
+        padding: 5px;
+    }
+    .color-input-container {
+        margin-top: 0;
+    }
+    .color-input {
+        height: 30px;
+        width: 100px;
+    }
+    .save-share-container {
+        padding: 0;
+        padding-left: 15px;
+    }
+    .save-share-container a {
+        margin: 0;
+        width: 80px;
+        height: 20px;
+        padding:2 10px;
+
     }
 }

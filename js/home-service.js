@@ -1,5 +1,7 @@
 'use strict'
-gFilterBy
+
+var gFilterBy
+var gImg
 var gImages = [ 
     {id:1, url:'./img/meme-imgs/1.jpg', keywords: ['simpsons', 'funny' ] },
     {id:2, url:'./img/meme-imgs/2.jpg', keywords: ['funny'] },
@@ -22,7 +24,15 @@ var gImages = [
     {id:13, url:'./img/meme-imgs/19.jpg', keywords: ['none'] },
     {id:13, url:'./img/meme-imgs/20.jpg', keywords: ['none'] },
 ]
-var gFilterBy
+
+// var gFilterKeywords = ['funny', 'comics', 'animal', 'White template', 'the office']
+var gFilterKeywords = [
+    {keyword: 'funny', frequency:0},
+    {keyword: 'animal', frequency:0},
+    {keyword: 'white template', frequency:0},
+    {keyword: 'the office', frequency:0},
+]
+
 
 function getImg(elImg) {
     var img = gImages.find(img => img.url === elImg.dataset.url)

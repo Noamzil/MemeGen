@@ -1,0 +1,33 @@
+/* FONTS */
+
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url(/font/Montserrat/Montserrat-Regular.ttf);
+}
+
+/* GENERAL */
+body {
+    box-sizing: border-box;
+    font-family: Montserrat-Regular;
+    margin: 0;
+}
+h1,h2,h3,h4,h5,h6,p {
+    margin: 0;
+}
+
+
+/* HELPERS */
+.main-layout {
+    margin: auto;
+    max-width: 1250px;
+}
+
+.flex {
+    display: flex;
+}
+
+.clean-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}

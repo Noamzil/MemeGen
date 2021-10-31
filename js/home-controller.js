@@ -1,8 +1,7 @@
 'use strict'
-renderGallery(gImages)
-var gImg
+onRenderGallery(gImages)
 
-function renderGallery(images) {
+function onRenderGallery(images) {
     const elGallery = document.querySelector('.gallery-container')
     var strHtml = ''
     images.forEach(function (img) {
@@ -31,20 +30,32 @@ function onGoToHomePage() {
 }
 
 
-function onFilterImg(filter) {
+function onFilterImg(filter,word) {
+    if (!filter) onRenderGallery(gImages)
+    var currKeyWord = gFilterKeywords.find(keywordObj => keywordObj.keyword === filter)
+    currKeyWord.frequency++
+    console.log(currKeyWord)
     gFilterBy = filter
-    console.log(gFilterBy);
-    renderGallery(filterImg())
+    onRenderGallery(filterImg())
 }
 
+
 function openMenu() {
-    console.log('im here');
-    var elMenu =  document.querySelector('.keywords-container')
+    var elMenu = document.querySelector('.keywords-filter-container')
     elMenu.style.right = 0
 }
 
 function closeMenu() {
-    var elMenu =  document.querySelector('.keywords-container')
-    elMenu.style.right = -300+'px'
+    var elMenu = document.querySelector('.keywords-filter-container')
+    elMenu.style.right = -300 + 'px'
 
 }
+
+function renderKeyWords() {
+    var elKeyWords = document.querySelector('.keywords')
+    var strHtml = ''
+    gFilterKeywords.forEach(keywordObj => strHtml += `<li class="keyword" onclick="onFilterImg(this.innerText,this)">${keywordObj.keyword}</li>`)
+    elKeyWords.innerHTML = strHtml
+}
+
+renderKeyWords()

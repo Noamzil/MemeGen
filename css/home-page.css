@@ -1,26 +1,10 @@
-/* FONTS */
-
-@font-face {
-    font-family: Montserrat-Regular;
-    src: url(/fonts/Montserrat/Montserrat-Regular.ttf);
-}
-
-/* GENERAL */
-body {
-    box-sizing: border-box;
-    font-family: Montserrat-Regular;
-    margin: 0;
-}
-h1,h2,h3,h4,h5,h6,p {
-    margin: 0;
-}
-
 /* HEADER */
+
 header {
     height: 150px;
     background-color: #ff8000c4;
     padding-left: 1.25rem;
-    padding-right:1.25rem;
+    padding-right: 1.25rem;
 }
 
 .header-container {
@@ -28,6 +12,7 @@ header {
     align-items: center;
     height: 100%;
 }
+
 .header-logo {
     height: 170px;
     align-self: center;
@@ -48,20 +33,34 @@ header {
     align-items: center;
 }
 
-.keywords-container {
+.keywords-filter-container {
     height: 6.25rem;
-    display: flex;
     justify-content: space-between;
-    background-color: white;
     align-items: center;
     padding-right: 1.25rem;
     padding-left: 1.25rem;
 }
 
-.keywords-filter {
-    display: flex;
-    gap: 1.25rem;
-    padding-left: 1.25rem;
+.keywords-container {
+    align-items: center;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.keywords {
+    justify-content: space-between;
+}
+
+.keywords li {
+    /* border: green solid 2px; */
+    border-right: rgba(204, 202, 202, 0.678) solid 1px;
+    padding: 0 10px;
+}
+
+.keywords-filter-container a {
+    color: rgb(99, 94, 94);
+    padding-left: 7px;
+    cursor: pointer;
 }
 
 .keyword-search {
@@ -107,32 +106,22 @@ footer {
     height: 40px;
 }
 
-.hamburger-sign  {
-    height:50px;
+.hamburger-sign {
+    height: 40px;
     display: none;
-    padding-left: 20px; ;
+    padding-right: 20px;
+    ;
 }
+
 .x-sign {
     height: 20px;
-    background-color: white;
     padding: 10px;
-    box-shadow: 0 0 0 ;
-    box-shadow: 1px 1px 19px lightgray;
+    box-shadow: 0 0 0;
     cursor: pointer;
     display: none;
 }
 
-/* HELPERS */
-.main-layout {
-    margin: auto;
-    max-width: 1250px;
-}
-
-.flex {
-    display: flex;
-}
-
-.toggleMenu{
+.toggleMenu {
     transform: translateX(0);
 }
 
@@ -149,15 +138,26 @@ footer {
     transition: opacity .6s;
 }
 
-
-
 @media (max-width:800px) {
-
+    body {
+        width: 100vw;
+    }
+    .header-container {
+        max-width: 90vw;
+        margin: 0;
+        
+    }
+    .main-header {
+        margin: 0;
+        width: 100vw;
+        font-size: medium;
+        height: 100px;
+    }
     .gallery-img {
         height: 12.5rem;
         width: 12.55rem;
     }
-    .keywords-container {
+    .keywords-filter-container {
         position: fixed;
         top: 0;
         right: -300px;
@@ -170,9 +170,9 @@ footer {
         background-color: rgba(255, 255, 255, .9);
         width: 200px;
         border-inline-start: 1px solid #e0e0e0;
-        transition: all .6s; 
+        transition: all .6s;
     }
-    .keywords-filter {
+    .keywords {
         display: flex;
         flex-direction: column;
     }
@@ -183,5 +183,8 @@ footer {
     .hamburger-sign, .x-sign {
         display: block;
     }
+    .header-logo {
+        height: 100px;
+        width: 150px;
+    }
 }
-

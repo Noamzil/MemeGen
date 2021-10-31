@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MemeGen</title>
     <link rel="icon" href="./img/logo3.jpg">
+    <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="./css/home-page.css">
     <link rel="stylesheet" href="./css/edit-page.css">
 
@@ -23,17 +24,14 @@
             </nav>
         </div>
     </header>
+
     <div class="home-page">
-        <section class="keywords-container main-layout">
+        <section class="keywords-filter-container main-layout flex">
             <img class="x-sign" src="/img/X.png" onclick="closeMenu()">
-            <input class="keyword-search" type="search" placeholder="Enter search keyword">
-            <div class="keywords-filter">
-                <h3 class="keyword" onclick="onFilterImg('funny')">funny</h3>
-                <h3 class="keyword" onclick="onFilterImg('comics')">comics</h3>
-                <h3 class="keyword" onclick="onFilterImg('dog')">dogs</h3>
-                <h3 class="keyword" onclick="onFilterImg('white template')">White template</h3>
-                <h3 class="keyword" onclick="onFilterImg('animal')">Animals</h3>
-                <!-- <h3 class="keyword">more</h3> -->
+            <input class="keyword-search" type="search" placeholder="Enter search keyword" onchange="onFilterImg(value)">
+            <div class="keywords-container flex">
+                <ul class="keywords clean-list flex"></ul>
+                <a class="more-btn">More..</a>
             </div>
         </section>
         <main>
@@ -45,9 +43,9 @@
         </footer>
     </div>
 
-    <div class="edit-page" hidden>
+    <div class="edit-page" hidden onload="onInit()">
         <div class="edit-container">
-            <canvas height="600" width="600" id="my-canvas"></canvas>
+            <canvas height="600" width="600" id="my-canvas" onmousedown="onDown(event)" onmousemove="onMove(event)" onmouseup="onUp()" ontouchmove="onMove(event)" ontouchstart="onDown(event)" ontouchend="onUp()" ></canvas>
 
             <div class="input-container">
                 <input type="text" class="meme-text line-0" placeholder="First line" onclick="getLineIdx(0)"
@@ -57,21 +55,22 @@
                 <div class="edit-cont-btn">
                     <img class="img-icon" src="./img/ICONS/up.png" onclick="onMoveLine('up')">
                     <img class="img-icon" src="./img/ICONS/down.png" onclick="onMoveLine('down')">
-                    <!-- <img class="img-icon" src="./img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"> -->
-                    <!-- <img class="img-icon" src="./img/ICONS/add.png"> -->
-                    <!-- <img class="img-icon" src="./img/ICONS/trash.png"> -->
                     <img class="img-icon" src="./img/ICONS/increase font - icon.png"
                         onclick="onIncreaseDecreaseTextSize('bigger')">
                     <img class="img-icon" src="./img/ICONS/decrease font - icon.png"
                         onclick="onIncreaseDecreaseTextSize('smaller')">
-                    <img class="img-icon" src="./img/ICONS/align-to-left.png" onclick="onAlignText('left')">
-                    <img class="img-icon" src="./img/ICONS/center-text-alignment.png" onclick="onAlignText('center')">
-                    <img class="img-icon" src="./img/ICONS/align-to-right.png" onclick="onAlignText('right')">
-                    <select class="select-font">
+                    <section>
+                        <img class="img-icon" src="./img/ICONS/align-to-left.png" onclick="onAlignText('left')">
+                        <img class="img-icon" src="./img/ICONS/center-text-alignment.png"
+                            onclick="onAlignText('center')">
+                        <img class="img-icon" src="./img/ICONS/align-to-right.png" onclick="onAlignText('right')">
+                    </section>
+                    <select class="select-font" onchange="onChangeFont(value)">
                         <option>Impact</option>
-                        <option>Impact</option>
-                        <option>Impact</option>
-                        <option>Impact</option>
+                        <option>Arial</option>
+                        <option>Verdana</option>
+                        <option>Times New Roman</option>
+                        <option>Courier New</option>
                     </select>
                 </div>
                 <div class="color-input-container">

@@ -1,12 +1,6 @@
 'use strict'
-
 var gElCanvas = document.getElementById('my-canvas');
 var gCtx = gElCanvas.getContext('2d');
-const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
-var gStartPos
-var gIsDrag
-addListeners()
-
 
 function drawImg(elImg) {
   gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
@@ -16,11 +10,11 @@ function drawImgFromSrc(imgSource) {
   img.src = imgSource
   gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
 }
-function drawText(text, x, y, size = 50, color = 'white', storkeColor = 'black') {
+function drawText(text, x, y, size = 50, color = 'white', storkeColor = 'black', font = 'Impact') {
   gCtx.lineWidth = 2;
   gCtx.strokeStyle = storkeColor;
   gCtx.fillStyle = color;
-  gCtx.font = `${size}px Impact`;
+  gCtx.font = `${size}px ${font}`;
   gCtx.fillText(text, x, y);
   gCtx.strokeText(text, x, y);
 }
@@ -29,7 +23,7 @@ function drawTextFromInput(text, y, lineIdx) {
   markLine()
   if (!gMeme.lines[lineIdx]) {
     drawImgFromSrc(gImg.url)
-    gMeme.lines[lineIdx] = { text: text, x: 80, y: y, size: 50, color: 'white', storkeColor: 'black' }
+    gMeme.lines[lineIdx] = { text: text, x: 80, y: y, size: 50, color: 'white', storkeColor: 'black', font:'Impact'}
     gMeme['selectedLineIdx'] = lineIdx
     gMeme['url'] = gImg.url
     onDrawTheOtherLines()
@@ -41,7 +35,7 @@ function drawTextFromInput(text, y, lineIdx) {
     onDrawTheOtherLines()
     gMeme.lines[lineIdx].text = text
     onDrawLine(currLine)
-  }  
+  }
 }
 function onMoveLine(directon) {
   if (!gMeme.lines.length) return
@@ -85,47 +79,31 @@ function onDrawTheOtherLines() {
 }
 
 function onDrawLine(line) {
-  drawText(line.text, line.x, line.y, line.size, line.color, line.storkeColor)
+  drawText(line.text, line.x, line.y, line.size, line.color, line.storkeColor, line.font)
 }
 
-function resizeCanvas() {
-  var elContainer = document.querySelector('.canvas-container')
-  gElCanvas.width = elContainer.offsetWidth
-  gElCanvas.height = elContainer.offsetHeight
+
+
+function onChangeFont(font) {
+  var currLine = getCurrLine()
+  changeFont(currLine, font)
   drawImgFromSrc(gImg.url)
-}
+  onDrawLine(currLine)
+  onDrawTheOtherLines()
 
-function addListeners() {
-  addMouseListeners()
-  addTouchListeners()
-  // window.addEventListener('resize', () => {
-  //     resizeCanvas()
-  //     renderCanvas()
-  // })
-}
-
-function addMouseListeners() {
-  gElCanvas.addEventListener('mousemove', onMove)
-  gElCanvas.addEventListener('mousedown', onDown)
-  gElCanvas.addEventListener('mouseup', onUp)
 }
 
 
-function addTouchListeners() {
-  gElCanvas.addEventListener('touchmove', onMove)
-  gElCanvas.addEventListener('touchstart', onDown)
-  gElCanvas.addEventListener('touchend', onUp)
-}
 
 
 // DRAG AND DROP  - NEEDS SOME ORDER BETWEEN SERVICE AND CONTROLLER
-function getEvPos(ev) { 
+function getEvPos(ev) {
   var pos = {
     x: ev.offsetX,
     y: ev.offsetY
   }
   if (gTouchEvs.includes(ev.type)) {
-    // ev.preventDefault()
+    ev.preventDefault()
     ev = ev.changedTouches[0]
     pos = {
       x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
@@ -135,7 +113,7 @@ function getEvPos(ev) {
   return pos
 }
 function isTextClicked(clickedPos) {
-  if (!gMeme.lines.length) return
+  if (!gMeme.lines.length) return false
   var x = gMeme.lines[gLineIdx].x
   var y = gMeme.lines[gLineIdx].y
   var textLen = gMeme.lines[gLineIdx].text.length
@@ -144,15 +122,11 @@ function isTextClicked(clickedPos) {
   return clickedPos.x >= x && clickedPos.x <= x + distance && clickedPos.y >= y - textSize && clickedPos.y <= y
 }
 
-function onGetLine(ev,pos) {
-  console.log(pos); 
-  
-}
 
 function onDown(ev) {
   const pos = getEvPos(ev)
+  console.log('isTextClicked(pos):',isTextClicked(pos));
   if (!isTextClicked(pos)) return
-  onGetLine(ev,pos)
   setTextDrag(true)
   gStartPos = pos
   document.body.style.cursor = 'grabbing'
@@ -162,12 +136,12 @@ function setTextDrag(isDrag) {
 }
 function onMove(ev) {
   if (gIsDrag) {
-      const pos = getEvPos(ev)
-      const dx = pos.x - gStartPos.x
-      const dy = pos.y - gStartPos.y
-      gStartPos = pos
-      moveText(dx, dy)
-      renderCanvas()
+    const pos = getEvPos(ev)
+    const dx = pos.x - gStartPos.x
+    const dy = pos.y - gStartPos.y
+    gStartPos = pos
+    moveText(dx, dy)
+    renderCanvas()
   }
 }
 function moveText(dx, dy) {
@@ -184,5 +158,4 @@ function onUp() {
   setTextDrag(false)
   document.body.style.cursor = 'grab'
 }
-
 

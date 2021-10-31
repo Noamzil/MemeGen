@@ -3,12 +3,17 @@ var gMeme = { lines: 1 }
 var gLineIdx
 var gMemesStorage = loadFromStorage('memes')
 var gMemes = (!gMemesStorage) ? [] : gMemesStorage
-var gLineNumber =2
+var gLineNumber = 2
+
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
+var gStartPos
+var gIsDrag
+
+
 
 function getLineIdx(idx) {
     gLineIdx = idx
     markLine()
-
 }
 
 function getCurrLine() {
@@ -18,8 +23,8 @@ function getCurrLine() {
 
 function markLine() {
     var elInput = document.querySelector(`.line-${gLineIdx}`)
-    gMeme.lines.forEach(() => {})
-    for (var i = 0; i <gLineNumber; i++) {
+    gMeme.lines.forEach(() => { })
+    for (var i = 0; i < gLineNumber; i++) {
         var currLine = document.querySelector(`.line-${i}`).classList.remove('mark-line')
     }
     elInput.classList.add('mark-line')
@@ -69,4 +74,8 @@ function _saveMemeToStorage() {
         }
     }
     saveToStorage('memes', gMemes)
+}
+
+function changeFont(currLine, font){
+    currLine.font = font
 }
